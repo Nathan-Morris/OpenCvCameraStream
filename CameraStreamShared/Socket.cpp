@@ -374,7 +374,7 @@ TcpClient::TcpClient(const InetAddress& address, unsigned short port)
 
 TcpServer::TcpServer()
     : Socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) {
-    this->_socketHost.setAddress(INADDR_ANY);
+    this->_socketHost.setAddress(InetAddress((unsigned long)INADDR_ANY));
 }
 
 TcpServer::TcpServer(unsigned short port)

@@ -138,7 +138,7 @@ public:
     bool isValid() const;
     InetHost getSockName() const;
 
-    operator SOCKET() {
+    SocketType SOCKET() {
         return this->_socket;
     }
 

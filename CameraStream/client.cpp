@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 
-	broadcast.bind(InetHost(INADDR_ANY, BROADCAST_PORT));
+	broadcast.bind(InetHost((unsigned long)INADDR_ANY, BROADCAST_PORT));
 
 	LOG.logInformation("Searching For Client");
 

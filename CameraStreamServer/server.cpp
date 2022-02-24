@@ -123,7 +123,13 @@ int main(int argc, char* argv[]) {
 			LOG.logInformation("TCP Server Removed Client %s:%u", inet_ntoa(client.getSockName().getAddress()), client.getSockName().getPort());
 		}
 		else {
-			if (socket_errno != WSAEWOULDBLOCK) {
+			int wouldBlock;
+			#ifdef _WIN32
+				wouldBlock = WSAEWOULDBLOCK;
+			#else
+				wouldBlock = EWOULDBLOCK;
+			#endif
+			if (socket_errno != wouldBlock) {
 				LOG.logError("Tcp Server Socket Error -> ", Socket::getSocketLastError());
 				break;
 			}
