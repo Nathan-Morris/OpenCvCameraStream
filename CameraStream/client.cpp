@@ -73,6 +73,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
+		LOG.logInformation("Header says size is %i x %i", hdr.frameCols, hdr.frameRows);
 		cv::Mat frame(cv::Size(hdr.frameCols, hdr.frameRows), hdr.frameDataType, frameData.data());
 
 		cv::imshow("Live", frame);

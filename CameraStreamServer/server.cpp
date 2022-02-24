@@ -39,6 +39,7 @@ static void clientHandler(TcpClient& client) {
 
 	cam >> camFrame;
 
+	LOG.logInformation("Feed has dimensions: %i x %i", camFrame.cols, camFrame.rows);
 	hdr.frameCols = camFrame.cols;
 	hdr.frameRows = camFrame.rows;
 	hdr.frameDataType = camFrame.type();
