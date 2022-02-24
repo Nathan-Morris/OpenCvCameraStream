@@ -61,7 +61,6 @@ char getch(){
 #endif
 
 typedef struct _framehdr {
-	char id = FRAME_HDR_ID;
 	int frameDataType;
 	int frameDataTypeSz;
 	size_t frameRows = 0;

@@ -46,7 +46,8 @@ int main(int argc, char* argv[]) {
 
 	FrameHeader hdr;
 
-	if (client.recv((char*)&hdr, sizeof(FrameHeader)) < 1) {
+	uint receiveSize = client.recv((char*)&hdr, sizeof(FrameHeader));
+	if (receiveSize < 1) {
 		LOG.logError(
 			"Unable To Receive Frame Header Info From Client -> %s",
 			Socket::getSocketLastError().c_str()
@@ -54,6 +55,7 @@ int main(int argc, char* argv[]) {
 		return 0;
 	}
 
+	LOG.logInformation("received header size: %u vs %u", receiveSize, sizeof(FrameHeader));
 
 	cv::namedWindow("Live", CV_WINDOW_AUTOSIZE);
 	size_t frameSz = hdr.frameRows * hdr.frameCols * hdr.frameDataTypeSz;
@@ -73,7 +75,7 @@ int main(int argc, char* argv[]) {
 			}
 		}
 
-		LOG.logInformation("Header says size is %i x %i", hdr.frameCols, hdr.frameRows);
+		LOG.logInformation("Header says size is %u x %u", hdr.frameCols, hdr.frameRows);
 		cv::Mat frame(cv::Size(hdr.frameCols, hdr.frameRows), hdr.frameDataType, frameData.data());
 
 		cv::imshow("Live", frame);
