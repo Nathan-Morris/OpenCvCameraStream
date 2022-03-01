@@ -152,11 +152,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ansi.h" />
+    <ClInclude Include="Byte.h" />
+    <ClInclude Include="huffman.h" />
     <ClInclude Include="incglobal.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="Task.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Byte.cpp" />
+    <ClCompile Include="huffman.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Task.cpp" />
