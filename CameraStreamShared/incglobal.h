@@ -61,11 +61,10 @@ char getch(){
 #endif
 
 typedef struct _framehdr {
-	char id = FRAME_HDR_ID;
 	int frameDataType;
 	int frameDataTypeSz;
-	size_t frameRows = 0;
-	size_t frameCols = 0;
+	int frameRows = 0;
+	int frameCols = 0;
 } FrameHeader, *pFrameHeader;
 
 #pragma once
